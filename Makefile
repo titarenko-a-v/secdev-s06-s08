@@ -21,3 +21,10 @@ test:
 ci:
 	mkdir -p EVIDENCE/S08
 	pytest --junitxml=EVIDENCE/S08/test-report.xml -q
+
+ci-s06:
+	mkdir -p EVIDENCE/S06/logs
+	python3 -m venv .venv
+	.venv/bin/pip install -r requirements.txt
+	.venv/bin/python scripts/init_db.py
+	.venv/bin/pytest -q --junitxml=EVIDENCE/S06/test-report.xml --log-file=EVIDENCE/S06/logs/pytest.log
