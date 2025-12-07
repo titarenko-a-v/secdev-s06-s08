@@ -11,3 +11,4 @@ EVIDENCE/
 .github/
 tests/
 app.db
+.env
