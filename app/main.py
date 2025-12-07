@@ -15,7 +15,6 @@ templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 
 @app.get("/", response_class=HTMLResponse)
 def index(request: Request, msg: str | None = None):
-    # XSS: намеренно рендерим message без экранирования через шаблон (см. index.html)
     return templates.TemplateResponse({"request": request, "message": msg or "Hello!"}, "index.html")
 
 @app.get("/echo", response_class=HTMLResponse)
