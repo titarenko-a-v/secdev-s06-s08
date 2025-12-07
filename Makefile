@@ -22,7 +22,10 @@ ci:
 	mkdir -p EVIDENCE/S08
 	pytest --junitxml=EVIDENCE/S08/test-report.xml -q
 
-ci-s06:
+check-python-version:
+	@python3 -c 'import sys; assert sys.version_info >= (3, 11), "Python 3.11+ required"'
+
+ci-s06: check-python-version
 	mkdir -p EVIDENCE/S06/logs
 	python3 -m venv .venv
 	.venv/bin/pip install -r requirements.txt
